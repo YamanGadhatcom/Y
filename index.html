@@ -3,23 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>استبيان — مشروع تجريبي</title>
+<title>استبيان — الأمان على الإنترنت</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-:root{--bg:#f4f6fb;--card:#fff;--ink:#111827;--muted:#6b7280;--accent:#4f46e5;--accent2:#2563eb;--line:#e5e7eb}
+:root{--bg:#f4f6fb;--card:#fff;--ink:#111827;--muted:#6b7280;--accent:#4f46e5;--accent2:#2563eb;--line:#e5e7eb;--ok:#16a34a;--warn:#d97706;--bad:#dc2626}
 body{margin:0;font-family:'Cairo',system-ui,Tahoma,sans-serif;background:radial-gradient(1200px 600px at 50% -10%,#e0e7ff,transparent),var(--bg);color:var(--ink);min-height:100vh}
 .wrap{max-width:760px;margin:0 auto;padding:18px 16px 60px}
 .topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 4px 18px;font-weight:700}
 .brand span{color:var(--accent)}
 .meta{font-variant-numeric:tabular-nums;background:#fff;border:1px solid var(--line);padding:4px 12px;border-radius:999px;font-size:14px;color:var(--muted)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 12px 40px rgba(15,23,42,.06)}
-h1{font-size:26px;margin:0 0 14px}
+h1{font-size:25px;margin:0 0 14px}
 h2{font-size:20px;margin:14px 0 4px}
-.notice{background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:14px 16px;margin-bottom:18px;color:#78350f}
+h3{font-size:17px;margin:0 0 8px}
+.notice{background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:14px 16px;margin-bottom:18px;color:#78350f;line-height:1.8}
 .notice ul{margin:8px 0 0;padding-inline-start:20px;line-height:1.9}
 .consent{display:flex;gap:10px;align-items:flex-start;background:#f8fafc;border:1px solid var(--line);padding:14px;border-radius:14px;font-size:15px;line-height:1.7;cursor:pointer;margin-bottom:18px}
-.btn{font-family:inherit;font-size:16px;font-weight:700;border-radius:14px;padding:12px 22px;border:1px solid transparent;cursor:pointer;transition:.15s}
+.btn{font-family:inherit;font-size:16px;font-weight:700;border-radius:14px;padding:12px 22px;border:1px solid transparent;cursor:pointer;transition:.15s;display:inline-block;text-decoration:none;text-align:center}
 .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
 .btn.primary:disabled{opacity:.45;cursor:not-allowed}
 .btn.ghost{background:#fff;border-color:var(--line);color:var(--muted)}
@@ -28,6 +29,8 @@ h2{font-size:20px;margin:14px 0 4px}
 .q{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fcfdff}
 .q.missing{border-color:#fca5a5;background:#fef2f2}
 .q-label{font-weight:700;margin-bottom:10px;line-height:1.7}
+.scenario{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.8;color:#1e1b4b}
+.scenario b{color:#3730a3}
 .opt{display:flex;gap:10px;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:12px;margin:6px 0;background:#fff;cursor:pointer;transition:.12s;font-size:15px}
 .opt:hover{border-color:#c7d2fe;background:#f5f7ff}
 .opt input{accent-color:var(--accent);width:18px;height:18px;flex:none}
@@ -39,35 +42,39 @@ h2{font-size:20px;margin:14px 0 4px}
 .hidden{display:none}
 .muted{color:var(--muted);font-size:14px;margin:0 0 6px;line-height:1.7}
 .done-big{font-size:52px;line-height:1}
-.stat{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}
-.stat div{flex:1;min-width:140px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.stat b{display:block;font-size:22px;color:var(--accent)}
+.score-box{background:linear-gradient(135deg,#eef2ff,#e0e7ff);border:1px solid #c7d2fe;border-radius:18px;padding:20px;margin:16px 0;text-align:center}
+.score-big{font-size:38px;font-weight:700;color:var(--accent);margin:6px 0}
+.score-msg{font-weight:700;font-size:16px}
+.edu-box{background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:14px 0;line-height:1.9}
+.edu-box ul{margin:6px 0 0;padding-inline-start:20px;line-height:2}
+.edu-box li{margin:2px 0}
 .small{font-size:13px;color:var(--muted);line-height:1.8}
+.tag{display:inline-block;background:#fee2e2;color:#991b1b;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:8px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="topbar">
-    <div class="brand">استبيان <span>·</span> مشروع تجريبي</div>
+    <div class="brand">استبيان <span>·</span> الأمان على الإنترنت</div>
     <div class="meta" id="timer">00:00</div>
   </div>
 
   <!-- ============ شاشة البداية ============ -->
   <section id="screen-intro" class="card">
-    <h1>قبل ما تبدأ 👋</h1>
+    <h1>أهلاً فيك 👋</h1>
     <div class="notice">
-      <strong>تنبيه مهم — اقرأه منيح:</strong>
+      <strong>اقرأ هالتنبيه قبل ما تبدأ:</strong>
       <ul>
-        <li>هاد موقع <b>تجريبي</b> لمشروع جامعي، وكل إجابة بتكتبها <b>رح تنرسل على إيميل صاحب المشروع</b> (ygadhat2@gmail.com).</li>
-        <li><b>لا تكتب</b> كلمات مرور، أرقام بطاقات، أرقام هوية، أو أي معلومة بنكية.</li>
-        <li>في أسئلة شخصية شوي — أغلبها فيه خيار «أفضل عدم الإجابة».</li>
-        <li>وفي أسئلة فيها <b>فخ</b>، وهاد مقصود 😉</li>
-        <li>الوقت بيتسجل من لحظة ما تبدأ.</li>
+        <li>هاد استبيان قصير عن الأمان على الإنترنت، بياخد منك <b>3 – 4 دقايق</b>.</li>
+        <li>كل إجاباتك <b>رح تنرسل على إيميل صاحب الاستبيان</b>.</li>
+        <li><b>لا تكتب</b> باسوردات، أرقام هوية، بيانات بطاقات، أو أي شي بنكي — ولا بالأسئلة المفتوحة.</li>
+        <li>رح تلاقي أسئلة فيها <b>مواقف افتراضية</b> ممكن تصير معك — خذ وقتك وجاوب بصدق.</li>
+        <li>بالنهاية رح تشوف <b>نتيجتك + توعية قصيرة</b>.</li>
       </ul>
     </div>
     <label class="consent">
       <input type="checkbox" id="consent">
-      <span>قرأت التنبيه وأوافق على إرسال إجاباتي على الإيميل المذكور.</span>
+      <span>قرأت التنبيه وأوافق على إرسال إجاباتي على الإيميل.</span>
     </label>
     <button id="btn-start" class="btn primary" disabled>يلا نبدأ</button>
   </section>
@@ -93,13 +100,42 @@ h2{font-size:20px;margin:14px 0 4px}
   <section id="screen-done" class="card hidden">
     <div class="done-big" id="done-icon">✅</div>
     <h2 id="done-title">تم إرسال إجاباتك</h2>
-    <p class="muted" id="done-msg">شكراً كتير على وقتك 🙏</p>
-    <div class="stat">
-      <div>الوقت المستغرق<b id="st-time">—</b></div>
-      <div>نتيجة أسئلة الدقة<b id="st-score">—</b></div>
-      <div>عدد الأسئلة<b id="st-count">—</b></div>
+    <p class="muted" id="done-msg">شكراً على وقتك 🙏</p>
+
+    <div class="score-box">
+      <div class="muted" style="margin:0">نتيجتك بأسئلة السيناريوهات</div>
+      <div class="score-big" id="score-num">— / 10</div>
+      <div class="score-msg" id="score-msg"></div>
     </div>
+
+    <div class="edu-box">
+      <h3>🎣 علامات التصيد الشائعة</h3>
+      <ul>
+        <li><b>استعجال وتخويف:</b> "حسابك رح يتوقف فوراً!" — التصيد بيعتمد على الخوف والوقت الضيق.</li>
+        <li><b>أخطاء إملائية ولغة ركيكة:</b> شركات كبيرة ما بترسل إيميلات بأخطاء.</li>
+        <li><b>رابط مشبوه:</b> مرر الماوس على الرابط قبل ما تضغط وشوف العنوان الحقيقي (مثلاً <code>micros0ft.com</code> بدل <code>microsoft.com</code>).</li>
+        <li><b>طلب بيانات حساسة:</b> باسورد، OTP، رقم بطاقة، تاريخ ميلاد — ولا جهة رسمية بتطلبها بالإيميل.</li>
+        <li><b>طلب تحويل فلوس أو بطاقات هدايا:</b> أشهر أسلوب احتيال باسم المدير أو القريب.</li>
+        <li><b>مرفقات غريبة:</b> ملفات <code>.exe</code> أو <code>.zip</code> من مرسل مجهول = خطر.</li>
+        <li><b>"ربحت!" أو عروض خارقة:</b> ما في شي ببلاش.</li>
+      </ul>
+    </div>
+
+    <div class="edu-box">
+      <h3>🛡️ كيف تحمي حالك</h3>
+      <ul>
+        <li>تحقق من المرسل والرابط قبل أي ضغطة.</li>
+        <li>لا تشارك OTP أو باسورد مع أي حدا — ولا مع "الدعم الفني".</li>
+        <li>فعّل <b>التحقق بخطوتين (2FA)</b> على كل حساباتك المهمة.</li>
+        <li>استخدم <b>باسورد مختلف لكل حساب</b> + مدير باسوردات.</li>
+        <li>إذا شكيت برسالة: اتصل بالجهة على رقم رسمي — مو رقم من الإيميل نفسه.</li>
+        <li>أبلغ عن الرسالة المشبوهة (Report Phishing).</li>
+        <li>إذا ضغطت على رابط أو دخلت بيانات: <b>غيّر الباسورد فوراً</b> وراجع حساباتك.</li>
+      </ul>
+    </div>
+
     <p class="small" id="done-note"></p>
+
     <div class="nav" id="done-actions" style="display:none">
       <button class="btn ghost" id="btn-copy">نسخ إجاباتي</button>
       <a class="btn primary" id="btn-mail" href="#">إرسال يدوي بالإيميل</a>
@@ -110,80 +146,94 @@ h2{font-size:20px;margin:14px 0 4px}
 <script>
 /* ================== الأقسام ================== */
 const SECTIONS = [
-  {t:'البيانات العامة',        d:'معلومات للتصنيف بس. الاسم اختياري.'},
-  {t:'أسئلة الدقة والتركيز',   d:'بسيطة… بس بدها تركيز. في أسئلة فخ.'},
-  {t:'عاداتك على الإنترنت',    d:'كون صريح، الإجابات بتروح عالإيميل بس.'},
-  {t:'آراء ومواقف',            d:'أسئلة شخصية شوي — في خيار «أفضل عدم الإجابة».'},
-  {t:'سيناريوهات وألغاز',      d:'خذ وقتك، بعضها فيها فخ.'},
-  {t:'أسئلة مفتوحة',           d:'اكتب براحتك.'}
+  {t:'معلومات سريعة',        d:'أسئلة بسيطة للتصنيف بس.'},
+  {t:'عاداتك على الإنترنت',   d:'كون صريح — الإجابات بتروح عالإيميل بس.'},
+  {t:'مواقف افتراضية',        d:'اقرأ كل سيناريو منيح قبل ما تجاوب.'},
+  {t:'أسئلة سريعة',           d:'تركيز بسيط.'},
+  {t:'أسئلة مفتوحة',          d:'اكتب براحتك.'}
 ];
 
 /* ================== الأسئلة ================== */
 const Q = [
-  /* ---------- 0: عام ---------- */
-  {id:'name', sec:0, type:'text', label:'الاسم (اختياري)', required:false, ph:'اتركه فاضي إذا بتحب تبقى مجهول'},
-  {id:'age', sec:0, type:'radio', label:'الفئة العمرية', required:true, opts:['أقل من 18','18 – 24','25 – 34','35 – 44','45 أو أكثر']},
-  {id:'gender', sec:0, type:'radio', label:'الجنس', required:true, opts:['ذكر','أنثى','أفضل عدم الإجابة']},
-  {id:'gov', sec:0, type:'select', label:'المحافظة', required:true, opts:['عمّان','إربد','الزرقاء','العقبة','المفرق','جرش','عجلون','مادبا','البلقاء','الكرك','معان','الطفيلة','خارج الأردن']},
-  {id:'edu', sec:0, type:'radio', label:'المستوى التعليمي', required:true, opts:['ثانوي أو أقل','بكالوريوس','ماجستير','دكتوراه','أفضل عدم الإجابة']},
-  {id:'status', sec:0, type:'radio', label:'وضعك الحالي', required:true, opts:['طالب','موظف','عمل حر','لا أعمل','متقاعد']},
+  /* ---------- 0: معلومات سريعة ---------- */
+  {id:'age',    sec:0, type:'radio', label:'الفئة العمرية', required:true,
+   opts:['أقل من 18','18 – 24','25 – 34','35 – 44','45 أو أكثر']},
+  {id:'gender', sec:0, type:'radio', label:'الجنس', required:true,
+   opts:['ذكر','أنثى','أفضل عدم الإجابة']},
+  {id:'device', sec:0, type:'radio', label:'أكثر جهاز بتستخدمه للإنترنت؟', required:true,
+   opts:['هاتف','لابتوب / كمبيوتر','تابلت','أكثر من جهاز']},
+  {id:'hours',  sec:0, type:'radio', label:'كم ساعة بتقضي على الإنترنت يومياً (تقريباً)؟', required:true,
+   opts:['أقل من ساعة','1 – 3 ساعات','3 – 6 ساعات','أكثر من 6 ساعات']},
 
-  /* ---------- 1: دقة ---------- */
-  {id:'att1', sec:1, type:'radio', label:'سؤال تحقق: الرجاء اختيار «محايد» في هذا السؤال فقط.', required:true,
-    opts:['أوافق بشدة','أوافق','محايد','لا أوافق','لا أوافق بشدة'], correct:'محايد'},
-  {id:'att2', sec:1, type:'radio', label:'كم يساوي: 8 + 5 × 2 ؟', required:true,
-    opts:['26','21','18','16'], correct:'18'},
-  {id:'att3', sec:1, type:'radio', label:'أي كلمة لا تنتمي للمجموعة؟', required:true,
-    opts:['تفاح','موز','سيارة','عنب'], correct:'سيارة'},
-  {id:'att4', sec:1, type:'radio', label:'هل بتقرأ الأسئلة بتركيز ولا بتمرّ عليها بسرعة؟', required:true,
-    opts:['بقرأ بتركيز','أحياناً بستعجل','بمرّ عليها بسرعة'], flagIf:['بمرّ عليها بسرعة']},
+  /* ---------- 1: عادات ---------- */
+  {id:'pass_reuse', sec:1, type:'radio', label:'هل بتستخدم نفس كلمة المرور لأكثر من حساب؟', required:true,
+   opts:['نعم، لمعظم الحسابات','لحسابين أو ثلاثة','لا، كل حساب مختلف','أفضل عدم الإجابة'], flagIf:['نعم، لمعظم الحسابات']},
+  {id:'terms',      sec:1, type:'radio', label:'بتقرأ شروط الاستخدام قبل ما تضغط «موافق»؟', required:true,
+   opts:['نعم، بقرأها','بقرأ جزء منها','لا، بعدها بسرعة']},
+  {id:'loc',        sec:1, type:'radio', label:'بتشارك موقعك مع التطبيقات؟', required:true,
+   opts:['دائماً','للتطبيقات اللي بثق فيها بس','أبداً']},
+  {id:'links',      sec:1, type:'radio', label:'بتضغط على روابط من مرسلين مجهولين؟', required:true,
+   opts:['بضغط بسرعة','بفتحها بس ما بكتب بيانات','ما بضغط أبداً'], flagIf:['بضغط بسرعة']},
+  {id:'url_check',  sec:1, type:'radio', label:'بتتحقق من عنوان الموقع (URL) قبل ما تسجل دخول؟', required:true,
+   opts:['دائماً','أحياناً','أبداً']},
 
-  /* ---------- 2: عادات ---------- */
-  {id:'hrs', sec:2, type:'radio', label:'كم ساعة بتقضي على الهاتف يومياً (تقريباً)؟', required:true,
-    opts:['أقل من ساعة','1 – 3 ساعات','3 – 6 ساعات','أكثر من 6 ساعات']},
-  {id:'pass', sec:2, type:'radio', label:'هل بتستخدم نفس كلمة المرور لأكثر من حساب؟', required:true,
-    opts:['نعم، لمعظم الحسابات','لحسابين أو ثلاثة','لا، كل حساب مختلف','أفضل عدم الإجابة'], flagIf:['نعم، لمعظم الحسابات']},
-  {id:'save', sec:2, type:'radio', label:'بتخلي المتصفح يحفظ كلمات المرور؟', required:true,
-    opts:['دائماً','أحياناً','أبداً']},
-  {id:'loc', sec:2, type:'radio', label:'بتشارك موقعك مع التطبيقات؟', required:true,
-    opts:['دائماً','للتطبيقات اللي بثق فيها بس','أبداً']},
-  {id:'terms', sec:2, type:'radio', label:'بتقرأ شروط الاستخدام قبل ما تضغط «موافق»؟', required:true,
-    opts:['نعم، بقرأها','بقرأ جزء منها','لا، بعدها بسرعة','أدّعي إني بقرأها بس ما بقرأ'], flagIf:['أدّعي إني بقرأها بس ما بقرأ']},
-  {id:'incog', sec:2, type:'radio', label:'هل بتستخدم «التصفح المتخفي» لأشياء ما بتحب حدا يعرفها؟', required:true,
-    opts:['نعم','أحياناً','لا','أفضل عدم الإجابة']},
-  {id:'protect', sec:2, type:'checkbox', label:'شو بتعمل لحماية حساباتك؟ (اختار كل اللي ينطبق)', required:true,
-    opts:['كلمة مرور قوية ومختلفة','التحقق بخطوتين','ما بشارك بياناتي مع حدا','ما بعمل ولا شي']},
+  /* ---------- 2: سيناريوهات ---------- */
+  {id:'scen1', sec:2, type:'radio', required:true,
+   scenario:'<b>📧 إيميل من "البنك":</b> «حسابك موقوف مؤقتاً. اضغط الرابط للتحقق فوراً خلال 24 ساعة وإلا رح يتقفل.»',
+   label:'شو بتعمل؟',
+   opts:['أضغط الرابط بسرعة','أتصل بالبنك مباشرة من رقم رسمي','أحذف الإيميل','أرد عليه وأسأل'],
+   correct:'أتصل بالبنك مباشرة من رقم رسمي'},
 
-  /* ---------- 3: آراء ---------- */
-  {id:'priv', sec:3, type:'radio', label:'بتعتقد إن الخصوصية على الإنترنت صارت وهم؟', required:true,
-    opts:['أوافق بشدة','أوافق','محايد','لا أوافق','لا أوافق بشدة']},
-  {id:'cv', sec:3, type:'radio', label:'هل سبق وكذبت أو زوّرت بشي بسيرتك الذاتية؟', required:true,
-    opts:['نعم','لا','أفضل عدم الإجابة'], flagIf:['نعم']},
-  {id:'money', sec:3, type:'radio', label:'بتعتقد إن المال بيجيب السعادة؟', required:true,
-    opts:['أكيد','يمكن','لا','أفضل عدم الإجابة']},
-  {id:'surprise', sec:3, type:'select', label:'لو حصلت 1000 دينار غير متوقعة، شو أول شي بتعمله؟', required:true,
-    opts:['أوفّرها','أسدد ديون','أشتري شي بحبه','أساعد حدا','أعمل مشروع']},
-  {id:'trust', sec:3, type:'radio', label:'بتعتقد إن الناس صادقين بشكل عام؟', required:true,
-    opts:['نعم، أغلبهم','لا، أغلبهم لا','محايد']},
-  {id:'monitor', sec:3, type:'radio', label:'بتؤيد إن الشركات تراقب موظفيها أثناء الدوام؟', required:true,
-    opts:['أؤيد بشدة','أؤيد بشروط','لا أؤيد','لا أؤيد أبداً']},
+  {id:'scen2', sec:2, type:'radio', required:true,
+   scenario:'<b>📱 رسالة واتساب من رقم مجهول:</b> «مبروك! ربحت آيفون 16 🎉 اضغط هنا لاستلام الجائزة.»',
+   label:'شو بتعمل؟',
+   opts:['أضغط، يمكن ربحت فعلاً','أحذفها وأبلّغ','أبعتها لأصحابي','أرد وأسأل'],
+   correct:'أحذفها وأبلّغ'},
 
-  /* ---------- 4: ألغاز ---------- */
-  {id:'rid1', sec:4, type:'radio', label:'في سلة 3 تفاحات، وأخذت 2. كم تفاحة معك؟', required:true,
-    opts:['1','2','3'], correct:'2'},
-  {id:'rid2', sec:4, type:'radio', label:'أبوك عنده 5 أولاد: الأول، الثاني، الثالث، الرابع… شو اسم الخامس؟', required:true,
-    opts:['الخامس','اسمي','ما بنعرف'], correct:'اسمي'},
-  {id:'rid3', sec:4, type:'radio', label:'كم مرة بتقدر تطرح 5 من 25؟', required:true,
-    opts:['5 مرات','4 مرات','مرة وحدة','ما بتفرق'], correct:'مرة وحدة'},
-  {id:'rid4', sec:4, type:'radio', label:'أي شهر فيه 28 يوم؟', required:true,
-    opts:['فبراير بس','كل الأشهر','فبراير ويناير'], correct:'كل الأشهر'},
-  {id:'rid5', sec:4, type:'radio', label:'لو عمر أحمد ضعف عمر سامي، وسامي عمره 12، كم عمر أحمد؟', required:true,
-    opts:['6','12','18','24'], correct:'24'},
+  {id:'scen3', sec:2, type:'radio', required:true,
+   scenario:'<b>💼 إيميل من "مديرك":</b> «بدي منك تشتري لي بطاقات هدايا iTunes عاجل وابعثلي الأكواد، ومرة بفهمك السبب.»',
+   label:'شو بتعمل؟',
+   opts:['بنفذ الطلب فوراً','بتأكد منه بصوت أو بشكل مباشر','أشتري بس ما أبعث','أطنش'],
+   correct:'بتأكد منه بصوت أو بشكل مباشر'},
 
-  /* ---------- 5: مفتوحة ---------- */
-  {id:'open1', sec:5, type:'textarea', label:'شو أكثر شي بيزعجك بالإنترنت هالأيام؟', required:false},
-  {id:'open2', sec:5, type:'text', label:'لو بتحذف تطبيق واحد من هاتفك للأبد، شو بيكون؟', required:false},
-  {id:'open3', sec:5, type:'textarea', label:'أي ملاحظة أو تعليق على الاستبيان؟ (بتوصل للدكتور 😄)', required:false}
+  {id:'scen4', sec:2, type:'radio', required:true,
+   scenario:'<b>🔗 وصلتك رسالة فيها رابط:</b> لما مررت الماوس عليه طلع العنوان <code>secure-bank-verify.xyz</code>',
+   label:'شو بتعمل؟',
+   opts:['أضغط، يبدو عادي','ما بضغط، العنوان مشبوه','أضغط بس بكتب البيانات بسرعة','أشارك الرابط'],
+   correct:'ما بضغط، العنوان مشبوه'},
+
+  {id:'scen5', sec:2, type:'radio', required:true,
+   scenario:'<b>📦 رسالة SMS:</b> «طردك في مركز التوزيع، اضغط هنا لتحديد موعد التسليم: bit.ly/x8k2»',
+   label:'شو بتعمل؟',
+   opts:['أضغط، يمكن طردي','ما بضغط، وما بشارك بياناتي','أرد على الرقم','أبعتها لأصحابي'],
+   correct:'ما بضغط، وما بشارك بياناتي'},
+
+  {id:'scen6', sec:2, type:'radio', required:true,
+   scenario:'<b>📧 إيميل فيه أخطاء إملائية كثيرة</b> وطلب «عاجل جداً» لتحديث بياناتك.',
+   label:'شو بتعمل؟',
+   opts:['أحدث البيانات فوراً','ما بضغط، علامات تصيد واضحة','أرد عليه','أحذفه بس'],
+   correct:'ما بضغط، علامات تصيد واضحة'},
+
+  /* ---------- 3: أسئلة سريعة ---------- */
+  {id:'https', sec:3, type:'radio', label:'شو معنى HTTPS بالمتصفح؟', required:true,
+   opts:['الموقع آمن 100%','الاتصال مشفر بس ما بيعني الموقع موثوق','الموقع حكومي','ما بعرف'],
+   correct:'الاتصال مشفر بس ما بيعني الموقع موثوق'},
+
+  {id:'fa', sec:3, type:'radio', label:'شو يعني 2FA؟', required:true,
+   opts:['كلمة مرور مزدوجة','التحقق بخطوتين','تشفير الملفات','ما بعرف'],
+   correct:'التحقق بخطوتين'},
+
+  {id:'att1', sec:3, type:'radio', label:'سؤال تركيز: الرجاء اختيار «محايد» في هذا السؤال فقط.', required:true,
+   opts:['أوافق','محايد','لا أوافق'],
+   correct:'محايد'},
+
+  {id:'att2', sec:3, type:'radio', label:'3 + 4 = ؟', required:true,
+   opts:['5','6','7','8'],
+   correct:'7'},
+
+  /* ---------- 4: مفتوحة ---------- */
+  {id:'open1', sec:4, type:'textarea', label:'شو أكثر شي بيقلقك بموضوع الأمان على الإنترنت؟', required:false},
+  {id:'open2', sec:4, type:'text',     label:'أي ملاحظة أو تعليق على الاستبيان؟', required:false}
 ];
 
 /* ================== الحالة ================== */
@@ -207,7 +257,7 @@ function renderQ(q){
     inner = `<input class="inp" type="text" data-id="${q.id}" value="${esc(v||'')}" placeholder="${esc(q.ph||'')}">`;
   }
   else if(q.type === 'textarea'){
-    inner = `<textarea class="inp" rows="3" data-id="${q.id}" placeholder="${esc(q.ph||'اكتب هنا…')}">${esc(v||'')}</textarea>`;
+    inner = `<textarea class="inp" rows="3" data-id="${q.id}" placeholder="اكتب هنا…">${esc(v||'')}</textarea>`;
   }
   else if(q.type === 'radio'){
     inner = q.opts.map(o => `
@@ -216,22 +266,11 @@ function renderQ(q){
         <span>${esc(o)}</span>
       </label>`).join('');
   }
-  else if(q.type === 'checkbox'){
-    const arr = Array.isArray(v) ? v : [];
-    inner = q.opts.map(o => `
-      <label class="opt">
-        <input type="checkbox" data-id="${q.id}" value="${esc(o)}" ${arr.includes(o)?'checked':''}>
-        <span>${esc(o)}</span>
-      </label>`).join('');
-  }
-  else if(q.type === 'select'){
-    inner = `<select class="inp" data-id="${q.id}">
-      <option value="">— اختار —</option>
-      ${q.opts.map(o => `<option value="${esc(o)}" ${v===o?'selected':''}>${esc(o)}</option>`).join('')}
-    </select>`;
-  }
+
+  const scen = q.scenario ? `<div class="scenario">${q.scenario}</div>` : '';
 
   return `<div class="q" data-qid="${q.id}">
+    ${scen}
     <div class="q-label">${esc(q.label)} ${q.required ? '<span style="color:#dc2626">*</span>' : '<span class="muted">(اختياري)</span>'}</div>
     ${inner}
   </div>`;
@@ -256,16 +295,7 @@ function onAnswer(e){
   const el = e.target;
   const id = el.dataset.id;
   if(!id) return;
-
-  if(el.type === 'checkbox'){
-    const arr = answers[id] || [];
-    if(el.checked){ if(!arr.includes(el.value)) arr.push(el.value); }
-    else { const i = arr.indexOf(el.value); if(i > -1) arr.splice(i, 1); }
-    answers[id] = arr;
-  } else {
-    answers[id] = el.value;
-  }
-
+  answers[id] = el.value;
   el.closest('.q')?.classList.remove('missing');
   $('#err').textContent = '';
 }
@@ -279,10 +309,7 @@ function validate(){
     if(!isAnswered(q)){
       $('#err').textContent = 'لسا في سؤال بدو إجابة: ' + q.label;
       const box = document.querySelector(`[data-qid="${q.id}"]`);
-      if(box){
-        box.classList.add('missing');
-        box.scrollIntoView({behavior:'smooth', block:'center'});
-      }
+      if(box){ box.classList.add('missing'); box.scrollIntoView({behavior:'smooth', block:'center'}); }
       return false;
     }
   }
@@ -314,11 +341,11 @@ function buildPayload(){
   if(finalElapsed < 60) flags.push('أكمل الاستبيان بأقل من دقيقة (سريع جداً)');
 
   const payload = {
-    _subject: '📋 إجابات الاستبيان — مشروع جامعي',
+    _subject: '📋 إجابات الاستبيان — الأمان على الإنترنت',
     _template: 'table',
     _captcha: 'false',
     '⏱️ الوقت المستغرق': fmtTime(finalElapsed) + ' (' + finalElapsed + ' ثانية)',
-    '🎯 نتيجة أسئلة الدقة': score + ' / ' + scored.length,
+    '🎯 نتيجة السيناريوهات': score + ' / ' + scored.length,
     '🚩 ملاحظات تلقائية': flags.length ? flags.join(' | ') : 'لا يوجد'
   };
   Q.forEach(q => {
@@ -326,7 +353,7 @@ function buildPayload(){
     payload[q.label] = Array.isArray(v) ? (v.join(' ، ') || '—') : (v || '—');
   });
 
-  return {payload, score, total: scored.length, flags};
+  return {payload, score, total: scored.length};
 }
 
 async function doSubmit(){
@@ -338,10 +365,7 @@ async function doSubmit(){
   finalElapsed = Math.floor((Date.now() - t0) / 1000);
   const {payload, score, total} = buildPayload();
 
-  // فخ السبام
-  if($('#honey').value.trim() !== ''){
-    finish(score, total, true); return;
-  }
+  if($('#honey').value.trim() !== ''){ finish(score, total); return; }
 
   try {
     const res = await fetch(ENDPOINT, {
@@ -352,9 +376,8 @@ async function doSubmit(){
     const data = await res.json().catch(() => ({}));
     if(!res.ok) throw new Error(data.message || 'فشل الإرسال');
     localStorage.setItem('survey_submitted', '1');
-    finish(score, total, false);
+    finish(score, total);
   } catch(err){
-    // فشل الإرسال → بديل يدوي
     btn.disabled = false;
     btn.textContent = 'إعادة المحاولة';
     showFallback(payload, score, total, err.message);
@@ -367,13 +390,7 @@ function showFallback(payload, score, total, msg){
   const mail = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('إجابات الاستبيان') +
                '&body=' + encodeURIComponent(body);
 
-  const done = $('#screen-done');
-  $('#done-icon').textContent = '⚠️';
-  $('#done-title').textContent = 'الإرسال التلقائي ما نجح';
-  $('#done-msg').textContent = 'إجاباتك محفوظة بالمتصفح. استخدم الأزرار تحت لإرسالها يدوياً.';
-  $('#st-time').textContent = fmtTime(finalElapsed);
-  $('#st-score').textContent = score + '/' + total;
-  $('#st-count').textContent = Q.length;
+  renderDone(score, total, {fallback:true});
   $('#done-note').textContent = 'ملاحظة: إذا كانت هاي أول مرة، لازم تفعّل الخدمة من إيميل ' + EMAIL + ' مرة وحدة.';
   $('#done-actions').style.display = 'flex';
   $('#btn-mail').href = mail;
@@ -381,21 +398,29 @@ function showFallback(payload, score, total, msg){
     navigator.clipboard.writeText(body).then(() => alert('تم نسخ الإجابات ✅'));
   };
   $('#screen-form').classList.add('hidden');
-  done.classList.remove('hidden');
-  window.scrollTo({top:0, behavior:'smooth'});
+  $('#screen-done').classList.remove('hidden');
 }
 
-function finish(score, total, silent){
+function finish(score, total){
   clearInterval(timerId);
-  $('#st-time').textContent = fmtTime(finalElapsed);
-  $('#st-score').textContent = score + ' / ' + total;
-  $('#st-count').textContent = Q.length;
+  renderDone(score, total, {});
   $('#done-note').textContent =
     'الإجابات انرسلت على ' + EMAIL + '. ' +
     'إذا كانت هاي أول مرة بيوصل إيميل تفعيل — افتحه واضغط الرابط مرة وحدة بس.';
   $('#screen-form').classList.add('hidden');
   $('#screen-done').classList.remove('hidden');
   window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderDone(score, total){
+  $('#score-num').textContent = score + ' / ' + total;
+  const pct = score / total;
+  let msg, color;
+  if(pct >= 0.8){ msg = '✅ ممتاز! عندك وعي عالي بالتصيد. خلّيك حذر دايماً.'; color = 'var(--ok)'; }
+  else if(pct >= 0.5){ msg = '🟡 لا بأس، بس في مجال تتحسن. راجع النقاط تحت.'; color = 'var(--warn)'; }
+  else { msg = '🔴 انتبه! ممكن تكون عرضة للتصيد. اقرأ التوعية تحت بتركيز.'; color = 'varت(--bad)'; من }
+  $('#score-msg').textContent = msg;
+  $('#score-msg').style.color = color;
 }
 
 /* ================== التنقل ================== */
@@ -424,11 +449,9 @@ $('#btn-next').addEventListener('click', () => {
 if(localStorage.getItem('survey_submitted') === '1'){
   $('#screen-intro').classList.add('hidden');
   $('#screen-done').classList.remove('hidden');
-  $('#done-title').textContent = 'أنت جاوبت من قبل ✅';
+  $('#done-title').textContent = 'أنت جاوب قبل ✅';
   $('#done-msg').textContent = 'هاد الجهاز أرسل إجابات سابقاً. شكراً مرة تانية!';
-  $('#st-time').textContent = '—';
-  $('#st-score').textContent = '—';
-  $('#st-count').textContent = Q.length;
+  $('#score-num').textContent = '— / 10';
   $('#done-note').textContent = 'إذا بدك تعيد الاختبار (مثلاً للتجريب)، امسح localStorage من المتصفح.';
 }
 </script>
